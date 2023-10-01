@@ -31,10 +31,10 @@ def main():
                         cpf = int(input("CPF: "))
                         senhaa = getpass.getpass("Digite sua senha: ")
                         cliente_encontrado = banco.validar_cliente_por_cpf_e_senha(cpf, senhaa)
-
+                
                         if cliente_encontrado:
                             os.system("cls")
-                            op = int(input(" \n [1] Saldo [2] Transferência \n [3] Depósito \n [4] Saque \n [5] Alterar dados \n [6] Excluir conta  \n [7] Voltar \n [8] Sair \n \n Digite a opção desejada: "))
+                            op = int(input(" \n [1] Saldo\n [2] Transferência \n [3] Depósito \n [4] Saque \n [5] Alterar dados \n [6] Excluir conta  \n [7] Voltar \n [8] Sair \n \n Digite a opção desejada: "))
                             match op:
                                 case 1:
                                     os.system("cls")
@@ -43,9 +43,9 @@ def main():
                                     os.system("pause")
                                 case 2:
                                     os.system("cls")
-                                    print("Para fazer uma transferencia, informe:")
-                                    cpff = int(input(" CPF do destinatário: "))
-                                    receptor = banco.validar_cliente_por_cpf_e_senha(cpff,"")
+                                    print("Para fazer uma transferência, informe:")
+                                    cpff = int(input("CPF do destinatário: "))
+                                    receptor = banco.getClienteCpf(cpff)
                                     if receptor:
                                         quantia = float(input("Quantia a transferir: "))
                                         cliente_encontrado.transferencia(quantia, receptor)

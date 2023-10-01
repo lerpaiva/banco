@@ -59,6 +59,13 @@ class Banco:
     
     def getEndereço(self):
         return self.endereço
+    
+    def getClienteCpf(self, cpf):
+        for cliente in self._clientes:
+            if cliente.getCPF() == cpf:
+                return cliente
+        return None
+    
 
     
 class Cliente:
@@ -92,12 +99,12 @@ class Cliente:
     def getSaldo(self):
         print(f"Seu saldo é de R$ {self._saldo}")
 
-    def transferencia (self,valor,receptor):
+    def transferencia(self, valor, receptor):
         if valor > 0 and self._saldo >= valor:
             self._saldo -= valor
             receptor.depositar(valor)
-            print(f"Transferencia concluída, no valor de R${valor}, para o cliente {receptor}")
+            print(f"Transferência concluída, no valor de R${valor}, para o cliente {receptor.getNome()}")
         else:
-            print("Transferencia inválida")
+            print("Transferência inválida")
             
         
